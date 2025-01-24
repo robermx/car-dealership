@@ -7,18 +7,12 @@ import { Brand } from './entities/brand.entity';
 @Injectable()
 export class BrandsService {
   private brands: Brand[] = [
-    {
-      id: uuid(),
-      name: 'Toyota',
-      description: `Toyota Motor Corporation is a Japanese automotive company that designs, manufactures, and sells cars, trucks, and other vehicles. Toyota is one of the world's largest and most successful car manufacturers`,
-      createdAt: new Date().getTime(),
-    },
-    {
-      id: uuid(),
-      name: 'Nissan',
-      description: `Nissan Motor Co., Ltd. is a Japanese company that designs, manufactures, and sells automobiles, trucks, and buses. Nissan is known for its reliable, stylish, and performance-oriented vehicles`,
-      createdAt: new Date().getTime(),
-    },
+    // {
+    //   id: uuid(),
+    //   name: 'Toyota',
+    //   description: `Toyota Motor Corporation is a Japanese automotive company that designs, manufactures, and sells cars, trucks, and other vehicles. Toyota is one of the world's largest and most successful car manufacturers`,
+    //   createdAt: new Date().getTime(),
+    // },
   ];
 
   create(createBrandDto: CreateBrandDto) {
@@ -64,5 +58,9 @@ export class BrandsService {
       throw new NotFoundException(`Brand with id '${id}' not found`);
     }
     return this.brands.splice(index, 1);
+  }
+
+  fillBrandsWithSeedData(brands: Brand[]) {
+    this.brands = brands;
   }
 }
